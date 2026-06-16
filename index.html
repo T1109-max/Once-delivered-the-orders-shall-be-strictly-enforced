@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>中文语音交互2D横版打怪小游戏 V2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="gameWrap">
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- 开始界面：背景使用 assets/start_intro.mp4 视频 -->
+    <section id="startScreen" class="screen">
+      <video class="screen-video" src="assets/start_intro.mp4" autoplay loop playsinline></video>
+      <div class="screen-mask"></div>
+      <div class="screen-card">
+        <h1>中文语音打怪小游戏</h1>
+        <p>说出「火焰 / 寒冰 / 雷电 / 吹风 / 护盾」释放技能。后续关卡会解锁「治愈」和「重拳」。</p>
+        <button id="enterBtn">进入游戏</button>
+      </div>
+    </section>
+
+    <!-- 结算/失败动画界面：根据结果切换视频 -->
+    <section id="endingScreen" class="screen hidden">
+      <video id="endingVideo" class="screen-video" autoplay loop playsinline></video>
+      <div class="screen-mask"></div>
+      <div class="screen-card">
+        <h1 id="endingTitle">结算</h1>
+        <p id="endingScore">最终得分：0</p>
+        <button id="endingRestartBtn">重新开始</button>
+      </div>
+    </section>
+
+    <div id="centerTip" class="center-tip hidden"></div>
+    <!-- 每关结束后的 AI 风格评价弹窗 -->
+<div id="levelReviewPanel" class="level-review-panel hidden">
+  <h2 id="levelReviewTitle">第 1 关评价</h2>
+  <p id="levelReviewText">评价内容生成中...</p>
+  <button id="levelReviewBtn">确认，进入下一关</button>
+</div>
+    <!-- 成就系统：右上角圆形按钮和怪兽卡片面板 -->
+<button id="achievementBtn" class="achievement-btn">🏆</button>
+
+<div id="achievementPanel" class="achievement-panel hidden">
+  <div class="achievement-header">
+    <span>怪兽成就</span>
+    <button id="achievementCloseBtn">×</button>
+  </div>
+
+  <div id="achievementCards" class="achievement-cards">
+    <!-- 击败过的怪兽卡片会由 game.js 自动生成 -->
+  </div>
+</div>
+
+    <div class="controls">
+      <button id="musicBtn" title="开启/关闭背景音乐">音乐：关</button>
+      <span id="voiceStatus">语音：未开始</span>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
